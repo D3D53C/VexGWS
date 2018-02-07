@@ -8,7 +8,7 @@ Marc Steinebrunner
 Jonathan Haueis
 Jonas Heuberger
 
-Mechatroniker
-Mechatroniker
-Mechatroniker
 
+Elektroniker 
+Elektroniker
+Elektroniker
