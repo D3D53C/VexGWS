@@ -9,6 +9,6 @@ Jonathan Haueis
 Jonas Heuberger
 
 
-Elektroniker 
-Elektroniker
-Elektroniker
+Dennis Rösch
+Felix Trefzer
+David Rösch-Bär
