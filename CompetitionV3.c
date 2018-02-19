@@ -14,7 +14,7 @@
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*        Creator: Vex Team GWS Lörrach Baden-Wuerttemberg                   */
-/*				Version: 3.1																											 */
+/*				Version: 3.2																											 */
 /*				Email: 	 marc.steinebrunner@gmail.com															 */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
@@ -23,6 +23,8 @@
 #pragma platform(VEX2)
 
 #pragma competitionControl(Competition)
+
+#include "JoystickDriver.c"
 
 //Main competition background code...do not modify!
 //#include "Vex_Competition_Includes.c"
@@ -79,7 +81,7 @@ task main()			//Has to be changed to "usercontrol()"
 	nMotorEncoder[chevronMotor] = 0;
 
 	//The Minimal and Maximal Values for the Servos are saved here they can be modifyed to get the right Position
-	int highMotorEncMin = -500;
+	int highMotorEncMin = 0;
 	int highMotorEncMax =  500;
 
 	int chevronMotorEncMin = -500;
@@ -94,6 +96,8 @@ task main()			//Has to be changed to "usercontrol()"
 
 	while(true){
 		//current Values of the joysticks
+
+
 		joy_xl = vexRT[Ch4];
 		joy_yl = vexRT[Ch3];
 		joy_xr = vexRT[Ch1];
@@ -105,28 +109,29 @@ task main()			//Has to be changed to "usercontrol()"
 
 		//Movement
 		{
-			if((joy_yl > tolleranz)  || (joy_yl < -tolleranz))		//Backward and Forward Movement
+//			if((joy_yl < tolleranz)  || (joy_yl > -tolleranz))		//Backward and Forward Movement /// Änderung
+			if (joy_yl < 10 && joy_yl > -10)
 			{
-				leftPower 	= leftPower 	+ (0);
-				rightPower 	= rightPower 	+ (0);
+				leftPower 	= leftPower;
+				rightPower 	= rightPower;
 				}else{
 				leftPower = leftPower +(joy_yl /4);
 				rightPower = leftPower;
 			}
 
-			if((joy_xl > tolleranz) || (joy_xl < -tolleranz))			//Right Left Movement
+			if((joy_xl < tolleranz) && (joy_xl > -tolleranz))			//Right Left Movement
 			{
 				leftPower = leftPower 	+(0);
 				rightPower = rightPower +(0);
-				}else if(joy_xl > 0){														//Right
+				}
+				else if(joy_xl > 0){														//Right
 				leftPower = leftPower +(joy_xl/4);
 				rightPower = rightPower -(joy_xl/4);
-				}else{																					//Left
+				}
+				else{																					//Left
 				leftPower = leftPower -(joy_xl/4);
 				rightPower = rightPower +(joy_xl/4);
 			}
-			motor[leftMotor] = leftPower;											//Change speed of Motors
-			motor[rightPower] = rightPower;
 		}
 
 		//Mobile Goal	Btn Gruppe 5
