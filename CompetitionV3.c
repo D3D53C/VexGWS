@@ -13,7 +13,7 @@
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*        Creator: Vex Team GWS Lörrach Baden-Wuerttemberg                   */
+/*        Creator: Vex Team GWS LÃ¶rrach Baden-Wuerttemberg                   */
 /*				Version: 3.2																											 */
 /*				Email: 	 marc.steinebrunner@gmail.com															 */
 /*                                                                           */
@@ -109,8 +109,7 @@ task main()			//Has to be changed to "usercontrol()"
 
 		//Movement
 		{
-//			if((joy_yl < tolleranz)  || (joy_yl > -tolleranz))		//Backward and Forward Movement /// Änderung
-			if (joy_yl < 10 && joy_yl > -10)
+			if((joy_yl < tolleranz)  && (joy_yl > -tolleranz))		//Backward and Forward Movement 
 			{
 				leftPower 	= leftPower;
 				rightPower 	= rightPower;
@@ -183,13 +182,13 @@ task main()			//Has to be changed to "usercontrol()"
 			}
 		}
 
-		motor[leftMotor] 		= leftPower;
-		motor[rightMotor]		= rightPower;
+		motor[leftMotor] 		= 	leftPower;
+		motor[rightMotor]		= 	rightPower;
 
 		motor[MGMotorL]			=	direction[0] * 63;
-		motor[MGMotorR] 		= direction[0] * 63;
+		motor[MGMotorR] 		=	direction[0] * 63;
 
-		motor[chevronMotor]	=	direction[1] * 63;
+		motor[chevronMotor]		=	direction[1] * 63;
 
 		motor[highMotor]		=	direction[2] * 63;
 
